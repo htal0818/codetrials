@@ -4,9 +4,10 @@
 
 [![Paper](https://img.shields.io/badge/DOI-10.7554%2FeLife.17807-blue)](https://doi.org/10.7554/eLife.17807)
 [![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/)
+[![MATLAB](https://img.shields.io/badge/MATLAB-R2018b+-orange.svg)](https://www.mathworks.com/)
 [![License](https://img.shields.io/badge/License-Educational-yellow.svg)]()
 
-Complete Python reproduction of the active nematic gel theory model from:
+Complete **Python and MATLAB** reproduction of the active nematic gel theory model from:
 
 > **Reymann, A.C. et al.** "Cortical flow aligns actin filaments to form a furrow."
 > *eLife* 2016;5:e17807. DOI: 10.7554/eLife.17807
@@ -25,21 +26,38 @@ This repository contains a **step-by-step implementation** of the physics model 
 ✅ **Interactive tutorial** explaining the physics step-by-step
 ✅ **Publication-quality figures** reproducing paper results
 ✅ **Extensions** to symmetric division and contraction waves
+✅ **Both Python AND MATLAB** implementations (identical results!)
+
+---
+
+## Implementations
+
+This repository provides **two complete implementations** that produce identical results:
+
+### 🐍 Python Implementation
+- Object-oriented design
+- Jupyter notebook tutorial
+- NumPy, Matplotlib, SciPy
+- See main directory
+
+### 🔶 MATLAB Implementation
+- Object-oriented MATLAB class
+- No toolboxes required
+- Native MATLAB plotting
+- See `matlab/` directory
+
+**Choose your preferred language - both reproduce the paper!**
 
 ---
 
 ## Quick Start
 
-### Installation
+### Python Version
 
 ```bash
 # Install dependencies
 pip install -r requirements.txt
-```
 
-### Run Simulations
-
-```bash
 # Generate all results (takes ~5 minutes)
 python reproduce_results.py
 
@@ -49,6 +67,21 @@ python test_simulation.py
 # Interactive tutorial
 jupyter notebook tutorial_reymann_model.ipynb
 ```
+
+### MATLAB Version
+
+```matlab
+% Navigate to matlab directory
+cd matlab
+
+% Run basic example
+example_basic
+
+% Or generate all results
+reproduce_results
+```
+
+See `matlab/README_MATLAB.md` for detailed MATLAB documentation.
 
 ---
 
@@ -86,12 +119,20 @@ Actin filaments are modeled as an **active nematic gel** - a material with orien
 ├── DOCUMENTATION.md                 # Detailed physics explanation
 ├── requirements.txt                 # Python dependencies
 │
-├── reymann_simulation.py            # Core simulation class
-├── reproduce_results.py             # Generate all figures
-├── test_simulation.py               # Quick test
-├── tutorial_reymann_model.ipynb    # Step-by-step tutorial
+├── reymann_simulation.py            # Python: Core simulation class
+├── reproduce_results.py             # Python: Generate all figures
+├── test_simulation.py               # Python: Quick test
+├── tutorial_reymann_model.ipynb    # Python: Step-by-step tutorial
 │
-└── results/                         # Generated figures
+├── matlab/                          # MATLAB Implementation
+│   ├── ActiveNematicSimulation.m   # MATLAB: Core class
+│   ├── example_basic.m             # MATLAB: Basic example
+│   ├── reproduce_results.m         # MATLAB: Generate all figures
+│   ├── plotHistory.m               # MATLAB: Plotting function
+│   ├── README_MATLAB.md            # MATLAB: Documentation
+│   └── results_matlab/             # MATLAB: Generated figures
+│
+└── results/                         # Python: Generated figures
     ├── result_1_nematic_order_growth.png
     ├── result_2_spatial_alignment.png
     ├── result_3_turnover_effects.png
@@ -135,6 +176,7 @@ plot_simulation_state(sim)
 
 ### Different Flow Geometries
 
+**Python:**
 ```python
 # Symmetric division
 sim.set_flow_field('symmetric_division')
@@ -145,6 +187,36 @@ sim.set_flow_field('contraction_wave')
 # Uniform compression
 sim.set_flow_field('uniform_compression')
 ```
+
+**MATLAB:**
+```matlab
+% Symmetric division
+sim.setFlowField('symmetric_division');
+
+% Traveling wave
+sim.setFlowField('contraction_wave');
+
+% Uniform compression
+sim.setFlowField('uniform_compression');
+```
+
+---
+
+## Python vs MATLAB
+
+Both implementations are **functionally identical** and produce the same results. Choose based on your preference:
+
+| Feature | Python | MATLAB |
+|---------|--------|--------|
+| **Ease of use** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Performance** | Fast | Fast |
+| **Dependencies** | NumPy, SciPy, Matplotlib | None (base MATLAB) |
+| **Tutorial** | Jupyter notebook | Script with comments |
+| **Syntax** | `array[i, j]` | `array(i, j)` |
+| **Class methods** | `self.method()` | `obj.method()` |
+| **Plotting** | Matplotlib | Native MATLAB |
+
+**Bottom line:** Both are excellent - use what you're comfortable with!
 
 ---
 
